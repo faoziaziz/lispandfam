@@ -1,0 +1,11 @@
+#+TITLE: Scheme untuk Edgy
+#+AUTHOR: Aziz Amerul Faozi
+
+* Pengantar
+LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
+sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
+daripada sebagai bahasa manusia
+
+* Installasi
+** Scheme
+Petama kita mencoba untuk menggunakan scheme dalam part 1 kali ini

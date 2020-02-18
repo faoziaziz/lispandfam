@@ -1,0 +1,166 @@
+#+TITLE: Scheme untuk Edgy
+#+AUTHOR: Aziz Amerul Faozi
+#+EMAIL: admin@labseni.com
+
+#+STARTUP: overview
+#+STARTUP: content
+#+STARTUP: showall
+#+STARTUP: showeverythin
+* Pengantar
+LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
+sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
+daripada sebagai bahasa manusia
+
+* Installasi
+** Scheme
+Petama kita mencoba untuk menggunakan scheme dalam part 1 kali ini
+untuk memulai scheme kita bisa menggunakan mode interpreter terlebih dahulu.
+Seperi contoh berikut ini :
+#+BEGIN_SRC sh
+scheme
+#+END_SRC
+
+maka akan muncul code seperti berikut
+#+BEGIN_EXAMPLE
+1]=> (+ 1 1)
+#+END_EXAMPLE
+
+code diatas merupakan contoh untuk ekseskusi interpreter dalam mode scheme.
+Hasilnya jelas muncul angka 2.
+
+Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga bisa dibuild dengan menggunakan editor, salah satu editor favorit saya adalah emacs. Tapi kali ini saya tidak akan fokuskan untuk penggunaan emacs, walau nanti dalam buku ini juga mungkin akan ada screenshot dari emacs. Berikut contoh code yang disimpan dalam bentuk file berekstensi scm. 
+#+BEGIN_SRC scheme
+(+ 1 1)
+#+END_SRC
+
+Simpan file tersebut dalam file ujischeme.scm
+
+* Aritmatika
+
+Pada bagian ini saya mencoba untuk menggunakan buku yang dibuat oleh kurikum MIT untuk memberikan tutorial saja, karena contohnya saya takut akan 
+bisa membuat saya terjerat pasal plagiasi maka yang saya buat akan sedikit berbeda
+dari yang para dosen MIT buat. 
+
+** Aritmatika Standar
+Pertama kita akan mencoba melakukan penjumlahan, pengurangan, perkalian dengan menggunakan
+scheme.
+
+#+BEGIN_SRC scheme
+(+ 1 1); ini adalah contoh code untuk penjumlahan
+#+END_SRC
+
+bagian setelah tanda semicolon ";" merupakan komentar maka code tersebut hanya
+sebagai dokumentasi dari bahasa pemrograman sajah. Tidak akan dieksekusi oleh 
+komputer. Untuk membuat anda lebih familiar dengan bahasa pemrograman scheme, 
+anda bisa menebak hasil keluaran tersebut dengan menggunakan bahasa scheme
+
+#+BEGIN_SRC scheme
+(/ 6 2) ; contoh dengan pembagian
+(* 3 8); contoh dengan perkalian
+(- 4 1); Contoh dengan pengurangan
+#+END_SRC
+
+Sebagai informasi untuk anda bahasa Scheme itu mirip dengan bahasa lisp maka 
+dari itu penulisannya juga sama untuk kasus penulisan dengan negatif misalkan 
+anda tidak bisa langsung bisa menggunakan perintah berikut
+
+#+BEGIN_SRC scheme
+(-1); contoh salah mengesign angka negatif
+(- 1); contoh benar 
+#+END_SRC
+
+hal ini dikarenakan pada variable pertama pada tanda kurung digunakan sebagai 
+operand dari program. Berikut contoh salah ketika kita menjumlahkan angka empat 
+dengan min 1.
+
+#+BEGIN_SRC scheme
+(+ 4 -1) ; ini contoh salah
+(+ 4 (- 1)); ini contoh benar
+(+ 4 (-1)); ini contoh benar
+#+END_SRC
+
+dengan code tersebut anda bisa menilai sendiri lah yah, bagaimana cara memasukkan
+perintah aritmatika kedalam dialektika emacs. Oke gengs biar tambah edgy mari kita
+coba kerjakan soal MIT berikut,
+
+*** Latihan 1 
+
+1) Tentukan dari keluaran code berikut.
+#+BEGIN_SRC scheme
+11
+(+ 6 4 5)
+(- 9 1)
+(/ 6 2)
+(+ (* 2 4) (- 6 7))
+#+END_SRC
+
+
+** Constanta
+Lalu bagaimana yah kalau mau assign constanta di scheme, jadi gampang nih gengs,
+semisal kita punya fungsi $E=mc^2$, lalu nilai $m = 2$ nilai $c = 3*10^8$ maka 
+kamu bisa menulis seperti ini gengs.
+
+#+BEGIN_SRC scheme
+(define m 2) ; memasukkan nilai m
+(define c (* 3 (expt 10 8))); memasukkan nilai c
+(* m (expt c 2)); mengjadikan e = mc quadrat
+#+END_SRC 
+
+** Fungsi
+Seperti halnya dengan bahasa pemrograman lain bahasa pemrograman Scheme juga memiliki
+fungsi deklarasinya mirip seperti deklarasi konstanta tapi dia meiliki variable 
+masukkan.
+
+#+BEGIN_SRC scheme
+(define (pangkat2 x) (expt x 2)) ; deklarasi fungsi
+#+END_SRC
+
+dan eksekusinya tinggal panggil ajah fungsinya sebagai berikut
+#+BEGIN_SRC scheme
+(pangkat2 9) ; pemanggilan fungsi
+#+END_SRC
+
+
+** Aritmatika Anak Teknik
+
+Oke gengs ternyata Scheme bisa support dengan komputasi anak teknik, dia ternyata
+mampu untuk memanipulasi varible complex. Berikut contohnya
+
+#+BEGIN_SRC scheme
+(* 1+7i 1-7i) ; maka hasilnya pasti 50
+#+END_SRC
+
+ini berarti memang schemers bisa terbantu sekali dengan menggunakan bahasa ini,
+apalagi jika schemers adalah seorang anak teknik. 
+
+** String
+Untuk bisa lucu-lucuan harus ada string di bahasa pemrograman gengs, memang sih
+schemers akan cukup ribet untuk memanipulasi ini di scheme. Karena memang ini
+dibuat anak teknik untuk ngitung yang aneh-aneh ketimbang buat curhat makanya 
+schemers harus mengurangi curhatnya dengan banyak berhitung. Tapi bukan berarti 
+schemers tidak bisa menggunakan string loh gengs
+
+#+BEGIN_SRC scheme
+(string "mantap")
+
+#+END_SRC
+
+untuk memanggilnya dalam bentuk variable kamu bisa menggunakan konstanta atau fungsi
+
+#+BEGIN_SRC scheme
+(define teks1 (string "mantap"))
+(define teks2 (string "tidak mantap"))
+
+
+#+END_SRC
+
+** Conditional Statement
+
+Jika maka pasti merupakan suatu hal yang wajib untuk para pemrogram (AKA programmer)
+pastinya sih kalau scheme udah support untuk conditional Statement yah, 
+berikut adalah contoh penggunaan conditional statement dengan mengguanakan scheme
+
+#+BEGIN_SRC scheme
+(define x 10)
+()
+#+END_SRC

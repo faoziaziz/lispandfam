@@ -1,0 +1,26 @@
+#+TITLE: Scheme untuk Edgy
+#+AUTHOR: Aziz Amerul Faozi
+#+EMAIL: admin@labseni.com
+#+LATEX_HEADER: \documentclass{book}
+#+LATEX_HEADER:  \geometry{a4paper,total={170mm,257mm},left=20mm,top=20mm,}
+* Pengantar
+LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
+sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
+daripada sebagai bahasa manusia
+
+* Installasi
+** Scheme
+Petama kita mencoba untuk menggunakan scheme dalam part 1 kali ini
+untuk memulai scheme kita bisa menggunakan mode interpreter terlebih dahulu.
+Seperi contoh berikut ini :
+#+BEGIN_SRC sh
+scheme
+#+END_SRC
+
+maka akan muncul code seperti berikut
+#+BEGIN_EXAMPLE
+1]=> (+ 1 1)
+#+END_EXAMPLE
+
+code diatas merupakan contoh untuk ekseskusi interpreter dalam mode scheme.
+Hasilnya jelas muncul angka 2

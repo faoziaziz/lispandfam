@@ -1,0 +1,169 @@
+% Created 2020-02-16 Sun 02:48
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Aziz Amerul Faozi}
+\date{\today}
+\title{Scheme untuk Edgy}
+\hypersetup{
+ pdfauthor={Aziz Amerul Faozi},
+ pdftitle={Scheme untuk Edgy},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Pengantar}
+\label{sec:org47d7676}
+LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
+sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
+daripada sebagai bahasa manusia
+
+\section{Installasi}
+\label{sec:org628c887}
+\subsection{Scheme}
+\label{sec:orge84783a}
+Petama kita mencoba untuk menggunakan scheme dalam part 1 kali ini
+untuk memulai scheme kita bisa menggunakan mode interpreter terlebih dahulu.
+Seperi contoh berikut ini :
+\begin{verbatim}
+scheme
+\end{verbatim}
+
+maka akan muncul code seperti berikut
+\begin{verbatim}
+1]=> (+ 1 1)
+\end{verbatim}
+
+code diatas merupakan contoh untuk ekseskusi interpreter dalam mode scheme.
+Hasilnya jelas muncul angka 2.
+
+Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga bisa dibuild dengan menggunakan editor, salah satu editor favorit saya adalah emacs. Tapi kali ini saya tidak akan fokuskan untuk penggunaan emacs, walau nanti dalam buku ini juga mungkin akan ada screenshot dari emacs. Berikut contoh code yang disimpan dalam bentuk file berekstensi scm. 
+\begin{verbatim}
+(+ 1 1)
+\end{verbatim}
+
+Simpan file tersebut dalam file ujischeme.scm
+
+\section{Aritmatika}
+\label{sec:orgd65f4c8}
+
+Pada bagian ini saya mencoba untuk menggunakan buku yang dibuat oleh kurikum MIT untuk memberikan tutorial saja, karena contohnya saya takut akan 
+bisa membuat saya terjerat pasal plagiasi maka yang saya buat akan sedikit berbeda
+dari yang para dosen MIT buat. 
+
+\subsection{Aritmatika Standar}
+\label{sec:org7f96c34}
+Pertama kita akan mencoba melakukan penjumlahan, pengurangan, perkalian dengan menggunakan
+scheme.
+
+\begin{verbatim}
+(+ 1 1); ini adalah contoh code untuk penjumlahan
+\end{verbatim}
+
+bagian setelah tanda semicolon ";" merupakan komentar maka code tersebut hanya
+sebagai dokumentasi dari bahasa pemrograman sajah. Tidak akan dieksekusi oleh 
+komputer. Untuk membuat anda lebih familiar dengan bahasa pemrograman scheme, 
+anda bisa menebak hasil keluaran tersebut dengan menggunakan bahasa scheme
+
+\begin{verbatim}
+(/ 6 2) ; contoh dengan pembagian
+(* 3 8); contoh dengan perkalian
+(- 4 1); Contoh dengan pengurangan
+\end{verbatim}
+
+Sebagai informasi untuk anda bahasa Scheme itu mirip dengan bahasa lisp maka 
+dari itu penulisannya juga sama untuk kasus penulisan dengan negatif misalkan 
+anda tidak bisa langsung bisa menggunakan perintah berikut
+
+\begin{verbatim}
+(-1); contoh salah mengesign angka negatif
+(- 1); contoh benar 
+\end{verbatim}
+
+hal ini dikarenakan pada variable pertama pada tanda kurung digunakan sebagai 
+operand dari program. Berikut contoh salah ketika kita menjumlahkan angka empat 
+dengan min 1.
+
+\begin{verbatim}
+(+ 4 -1) ; ini contoh salah
+(+ 4 (- 1)); ini contoh benar
+(+ 4 (-1)); ini contoh benar
+\end{verbatim}
+
+dengan code tersebut anda bisa menilai sendiri lah yah, bagaimana cara memasukkan
+perintah aritmatika kedalam dialektika emacs. Oke gengs biar tambah edgy mari kita
+coba kerjakan soal MIT berikut,
+
+\subsubsection{Latihan 1}
+\label{sec:org1c9e196}
+
+\begin{enumerate}
+\item Tentukan dari keluaran code berikut.
+\end{enumerate}
+\begin{verbatim}
+11
+(+ 6 4 5)
+(- 9 1)
+(/ 6 2)
+(+ (* 2 4) (- 6 7))
+\end{verbatim}
+
+
+\subsection{Constanta}
+\label{sec:orgd8ef833}
+Lalu bagaimana yah kalau mau assign constanta di scheme, jadi gampang nih gengs,
+semisal kita punya fungsi \(E=mc^2\), lalu nilai \(m = 2\) nilai \(c = 3*10^8\) maka 
+kamu bisa menulis seperti ini gengs.
+
+\begin{verbatim}
+(define m 2) ; memasukkan nilai m
+(define c (* 3 (expt 10 8))); memasukkan nilai c
+(* m (expt c 2)); mengjadikan e = mc quadrat
+\end{verbatim}
+
+\subsection{Fungsi}
+\label{sec:org55b4c67}
+Seperti halnya dengan bahasa pemrograman lain bahasa pemrograman Scheme juga memiliki
+fungsi deklarasinya mirip seperti deklarasi konstanta tapi dia meiliki variable 
+masukkan.
+
+\begin{verbatim}
+(define (pangkat2 x) (expt x 2)) ; deklarasi fungsi
+\end{verbatim}
+
+dan eksekusinya tinggal panggil ajah fungsinya sebagai berikut
+\begin{verbatim}
+(pangkat2 9) ; pemanggilan fungsi
+\end{verbatim}
+
+
+\subsection{Aritmatika Anak Teknik}
+\label{sec:orgcf16457}
+
+Oke gengs ternyata Scheme bisa support dengan komputasi anak teknik, dia ternyata
+mampu untuk memanipulasi varible complex. Berikut contohnya
+
+\begin{verbatim}
+(* 1+7i 1-7i) ; maka hasilnya pasti 50
+\end{verbatim}
+
+ini berarti memang schemers bisa terbantu sekali dengan menggunakan bahasa ini,
+apalagi jika schemers adalah seorang anak teknik. 
+\end{document}
