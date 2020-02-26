@@ -1,4 +1,4 @@
-% Created 2020-02-16 Sun 02:48
+% Created 2020-02-27 Thu 00:17
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -14,6 +14,7 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
+\usepackage[margin=1.25in]{geometry}
 \author{Aziz Amerul Faozi}
 \date{\today}
 \title{Scheme untuk Edgy}
@@ -22,7 +23,7 @@
  pdftitle={Scheme untuk Edgy},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 26.3 (Org mode 9.3.2)}, 
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
  pdflang={English}}
 \begin{document}
 
@@ -30,31 +31,27 @@
 \tableofcontents
 
 \section{Pengantar}
-\label{sec:org47d7676}
+\label{sec:org71ecafe}
 LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
 sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
 daripada sebagai bahasa manusia
 
 \section{Installasi}
-\label{sec:org628c887}
+\label{sec:orgd15b7f1}
 \subsection{Scheme}
-\label{sec:orge84783a}
+\label{sec:orgfb4f709}
 Petama kita mencoba untuk menggunakan scheme dalam part 1 kali ini
 untuk memulai scheme kita bisa menggunakan mode interpreter terlebih dahulu.
 Seperi contoh berikut ini :
 \begin{verbatim}
 scheme
 \end{verbatim}
-
 maka akan muncul code seperti berikut
 \begin{verbatim}
 1]=> (+ 1 1)
 \end{verbatim}
-
 code diatas merupakan contoh untuk ekseskusi interpreter dalam mode scheme.
-Hasilnya jelas muncul angka 2.
-
-Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga bisa dibuild dengan menggunakan editor, salah satu editor favorit saya adalah emacs. Tapi kali ini saya tidak akan fokuskan untuk penggunaan emacs, walau nanti dalam buku ini juga mungkin akan ada screenshot dari emacs. Berikut contoh code yang disimpan dalam bentuk file berekstensi scm. 
+Hasilnya jelas muncul angka 2. Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga bisa dibuild dengan menggunakan editor, salah satu editor favorit saya adalah emacs. Tapi kali ini saya tidak akan fokuskan untuk penggunaan emacs, walau nanti dalam buku ini juga mungkin akan ada screenshot dari emacs. Berikut contoh code yang disimpan dalam bentuk file berekstensi scm. 
 \begin{verbatim}
 (+ 1 1)
 \end{verbatim}
@@ -62,26 +59,22 @@ Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga
 Simpan file tersebut dalam file ujischeme.scm
 
 \section{Aritmatika}
-\label{sec:orgd65f4c8}
+\label{sec:orge3db531}
 
 Pada bagian ini saya mencoba untuk menggunakan buku yang dibuat oleh kurikum MIT untuk memberikan tutorial saja, karena contohnya saya takut akan 
 bisa membuat saya terjerat pasal plagiasi maka yang saya buat akan sedikit berbeda
 dari yang para dosen MIT buat. 
-
 \subsection{Aritmatika Standar}
-\label{sec:org7f96c34}
+\label{sec:orge4ddb5e}
 Pertama kita akan mencoba melakukan penjumlahan, pengurangan, perkalian dengan menggunakan
 scheme.
-
 \begin{verbatim}
 (+ 1 1); ini adalah contoh code untuk penjumlahan
 \end{verbatim}
-
 bagian setelah tanda semicolon ";" merupakan komentar maka code tersebut hanya
 sebagai dokumentasi dari bahasa pemrograman sajah. Tidak akan dieksekusi oleh 
 komputer. Untuk membuat anda lebih familiar dengan bahasa pemrograman scheme, 
 anda bisa menebak hasil keluaran tersebut dengan menggunakan bahasa scheme
-
 \begin{verbatim}
 (/ 6 2) ; contoh dengan pembagian
 (* 3 8); contoh dengan perkalian
@@ -112,7 +105,7 @@ perintah aritmatika kedalam dialektika emacs. Oke gengs biar tambah edgy mari ki
 coba kerjakan soal MIT berikut,
 
 \subsubsection{Latihan 1}
-\label{sec:org1c9e196}
+\label{sec:org5850018}
 
 \begin{enumerate}
 \item Tentukan dari keluaran code berikut.
@@ -125,9 +118,8 @@ coba kerjakan soal MIT berikut,
 (+ (* 2 4) (- 6 7))
 \end{verbatim}
 
-
 \subsection{Constanta}
-\label{sec:orgd8ef833}
+\label{sec:orgc3348a0}
 Lalu bagaimana yah kalau mau assign constanta di scheme, jadi gampang nih gengs,
 semisal kita punya fungsi \(E=mc^2\), lalu nilai \(m = 2\) nilai \(c = 3*10^8\) maka 
 kamu bisa menulis seperti ini gengs.
@@ -139,7 +131,7 @@ kamu bisa menulis seperti ini gengs.
 \end{verbatim}
 
 \subsection{Fungsi}
-\label{sec:org55b4c67}
+\label{sec:org5b2610c}
 Seperti halnya dengan bahasa pemrograman lain bahasa pemrograman Scheme juga memiliki
 fungsi deklarasinya mirip seperti deklarasi konstanta tapi dia meiliki variable 
 masukkan.
@@ -153,9 +145,8 @@ dan eksekusinya tinggal panggil ajah fungsinya sebagai berikut
 (pangkat2 9) ; pemanggilan fungsi
 \end{verbatim}
 
-
 \subsection{Aritmatika Anak Teknik}
-\label{sec:orgcf16457}
+\label{sec:org5457b4a}
 
 Oke gengs ternyata Scheme bisa support dengan komputasi anak teknik, dia ternyata
 mampu untuk memanipulasi varible complex. Berikut contohnya
@@ -166,4 +157,296 @@ mampu untuk memanipulasi varible complex. Berikut contohnya
 
 ini berarti memang schemers bisa terbantu sekali dengan menggunakan bahasa ini,
 apalagi jika schemers adalah seorang anak teknik. 
+
+\subsection{String}
+\label{sec:org3958207}
+Untuk bisa lucu-lucuan harus ada string di bahasa pemrograman gengs, memang sih
+schemers akan cukup ribet untuk memanipulasi ini di scheme. Karena memang ini
+dibuat anak teknik untuk ngitung yang aneh-aneh ketimbang buat curhat makanya 
+schemers harus mengurangi curhatnya dengan banyak berhitung. Tapi bukan berarti 
+schemers tidak bisa menggunakan string loh gengs
+
+\begin{verbatim}
+(string "mantap")
+
+\end{verbatim}
+
+untuk memanggilnya dalam bentuk variable kamu bisa menggunakan konstanta atau fungsi
+
+\begin{verbatim}
+(define teks1 (string "mantap"))
+(define teks2 (string "tidak mantap"))
+
+
+\end{verbatim}
+
+\subsection{Conditional Statement}
+\label{sec:orged23842}
+Jika maka pasti merupakan suatu hal yang wajib untuk para pemrogram (AKA programmer)
+pastinya sih kalau scheme udah support untuk conditional Statement yah, 
+berikut adalah contoh penggunaan conditional statement dengan mengguanakan scheme
+
+\begin{verbatim}
+(define x 10)
+(display x)
+\end{verbatim}
+\section{Guile}
+\label{sec:orgc0be6a5}
+\subsection{Pengantar}
+\label{sec:org665adf3}
+\subsection{Instalasi}
+\label{sec:org93108ef}
+Oke gengs kali ini gue akan kombinasiin nih antara Scheme dan C. Guile 
+sebuah taktik legendaris untuk menggabungkan Scheme-MIT dan C, biar makin
+edgy.
+
+\begin{verbatim}
+wget ftp://ftp.gnu.org/gnu/guile/guile-3.0.0.tar.gz
+tar -zxvf guile-3.0.0.tar.gz 
+cd guile-3.0.0
+./configure
+make
+sudo make install
+\end{verbatim}
+\subsubsection{Scheme with Guile}
+\label{sec:org18bdf0d}
+Menggunakan Guile, untuk menggunakan guile just type command guile after installation succed.
+
+\begin{verbatim}
+guile 
+scheme@(guile-user)> (+ 1 2 3); just try to execute some command
+$1 = 6
+scheme@(guile-user)>
+
+\end{verbatim}
+Sekarang coba untuk melakukan eksekusi fungsi misalnya menggunakna factorial. Berikut untuk kodenya
+dengan 
+
+\begin{verbatim}
+(define (factorial n) ; define a function
+(if (zero? n) 1(* n (factorial (- n 1))))
+)
+
+(display (factorial 20))
+\end{verbatim}
+simpan file tersebut dengan nama mantap.csh lalu compile dengan kode berikut
+
+\begin{verbatim}
+guile mantap.sch
+\end{verbatim}
+
+Untuk mencoba menambahkan code anda bisa mencobanya dengan code berikut
+
+\begin{verbatim}
+(newline)
+(display (getpwnam "root"))
+(newline)
+\end{verbatim}
+kemudian file mantap.scm kemudian file tersebut menjadi seperti berikut
+\begin{verbatim}
+(newline)
+(define (factorial n) ; define a function
+(if (zero? n) 1(* n (factorial (- n 1))))
+)
+(newline)
+(display (getpwnam "root")) ; untuk menampilkan bash dokumen
+(newline)
+\end{verbatim}
+Code diatas adalah code lengkap dari kode untuk menghitung factorial dan
+menampilkan direktrori root. 
+
+\subsubsection{Menggunakan C untuk Guile}
+\label{sec:orgd8a322a}
+Pertama untuk buat dengan C 
+\begin{verbatim}
+#include<stdlib.h>
+#include<libguile.h>
+
+static SCM my_hostname(void){
+  char *s = getenv("HOSTNAME");
+  if(s==NULL)
+    return SCM_BOOL_F;
+  else
+    return scm_from_local_string(s);
+}
+
+static void inner_main(void *data, int argc, char **argv){
+  scm_c_define_gsubr("my-hostname", 0, 0, 0, my_hostname);
+  scm_shell(argc, argv);
+}
+
+int main(int argc, char **argv){
+  scm_boot_guile(argc, argv, inner_main, 0);
+  return 0; /* never reached */
+}
+\end{verbatim}
+set path
+\begin{verbatim}
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+\end{verbatim}
+Kemudian kompile kode berikut dengan methode shared builing. 
+\begin{verbatim}
+gcc -o simple-guile simple-guile.c\
+ -I/usr/local/include/guile/3.0\
+ -L/usr/local/lib -lguile-3.0
+\end{verbatim}
+
+Kemudian set library path anda agar programnya bisa dieksekusi.
+\begin{verbatim}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+\end{verbatim}
+Jika kamu ingin menjalankan program anda yang telah anda build dengan cara shared build
+anda bisa menggunakan perintah berikut
+
+\begin{verbatim}
+./simple-guile
+\end{verbatim}
+
+Untuk kopmilasi dengan menggunakan pkg-config anda bisa menggunakan perintah ini,
+(ini sudah di test dengan arch linux) 
+\begin{verbatim}
+gcc -o simple-guile3 simple-guile.c\
+$(pkg-config --cflags --libs guile-3.0)
+\end{verbatim}
+\subsubsection{Build to shared library}
+\label{sec:org25abbfa}
+Guile sebenarnya memiliki shared link library. Tapi kali ini gue akan mecoba 
+utnuk membuat ekstensi dengan memnggunakan guile. Sebenarnya itu object library
+biasa. 
+
+\begin{verbatim}
+/*
+  Author : Aziz Faozi
+  Description : this code will create extension in shared library.
+  filename : bessel.c
+*/
+
+#include<math.h>
+#include<libguile.h>
+
+SCM j0_wrapper(SCM x){
+  return scm_from_double(j0 (scm_to_double (x)));
+}
+
+SCM init_bessel(){
+  scm_c_define_gsubr("j0", 1, 0, 0, j0_wrapper);
+}
+
+\end{verbatim}
+untuk membuat ekstensi dari kode tersbut kamu bisa menggunakan perintah berikut
+\begin{verbatim}
+gcc $(pkg-config --cflags guile-3.0) -shared -o libguile-bessel.so -fPIC bessel.c
+\end{verbatim}
+untuk mengetes atau melihat dependency nya kamu bisa melihat dengan perintah ldd
+\begin{verbatim}
+ldd ./libguile-bessel.so 
+\end{verbatim}
+Maka akan nampak tampilan seperti berikut
+\begin{verbatim}
+ldd ./libguile-bessel.so 
+	linux-vdso.so.1 (0x00007fff105d8000)
+	libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007efc9cf3d000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007efc9cd75000)
+	/usr/lib64/ld-linux-x86-64.so.2 (0x00007efc9cf95000) 
+\end{verbatim}
+
+
+setelah itu kita coba load extensionnya dengan menggunakan guile 
+\begin{verbatim}
+?????  test git:(master) ????? guile
+guile
+GNU Guile 3.0.0
+Copyright (C) 1995-2020 Free Software Foundation, Inc.
+
+Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+This program is free software, and you are welcome to redistribute it
+under certain conditions; type `,show c' for details.
+
+Enter `,help' for help.
+scheme@(guile-user)> (load-extension "./libguile-bessel" "init_bessel")
+(load-extension "./libguile-bessel" "init_bessel")
+scheme@(guile-user)> (j0 2)
+(j0 2)
+$1 = 0.22389077914123567
+scheme@(guile-user)> 
+\end{verbatim}
+
+\subsubsection{Menggunakan Module}
+\label{sec:orga7506be}
+Untuk melihat module di contentn ya kalian bisa melihat direktory di 
+\begin{verbatim}
+/usr/local/share/guile/3.0
+\end{verbatim}
+Disana kita bisa melihat daftar module yang bisa kita pakai dengan guile, 
+seperti contoh ice-9 kalian akan mendapatkannya dalam list daftar berikut.
+
+\begin{verbatim}
+~ mantap => ls -la /usr/local/share/guile/3.0
+total 456
+drwxr-xr-x 13 root root   4096 Feb 24 22:43 .
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 ..
+-rw-r--r--  1 root root 307025 Feb 24 22:43 guile-procedures.txt
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 ice-9
+drwxr-xr-x 10 root root   4096 Feb 24 22:43 language
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 oop
+drwxr-xr-x  5 root root   4096 Feb 24 22:43 rnrs
+-rw-r--r--  1 root root  12708 Feb 24 22:43 rnrs.scm
+drwxr-xr-x  2 root root   4096 Feb 24 22:43 scheme
+drwxr-xr-x  2 root root   4096 Feb 24 22:43 scripts
+drwxr-xr-x  7 root root   4096 Feb 24 22:43 srfi
+-rw-r--r--  1 root root  36375 Feb 24 22:43 statprof.scm
+drwxr-xr-x  4 root root   4096 Feb 24 22:43 sxml
+drwxr-xr-x  5 root root   4096 Feb 24 22:43 system
+drwxr-xr-x  2 root root   4096 Feb 24 22:43 texinfo
+-rw-r--r--  1 root root  52321 Feb 24 22:43 texinfo.scm
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 web
+\end{verbatim}
+
+Sekarang kita akan mencoba untuk memanggil model ice-9.
+\begin{verbatim}
+scheme@(guile-user)> (use-modules (ice-9 popen))
+(use-modules (ice-9 popen))
+scheme@(guile-user)> (use-modules (ice-9 rdelim))
+(use-modules (ice-9 rdelim))
+scheme@(guile-user)> (define p (open-input-pipe "ls -l"))
+(define p (open-input-pipe "ls -l"))
+scheme@(guile-user)> (read-line p)
+(read-line p)
+$1 = "total 500"
+scheme@(guile-user)> (read-line p)
+(read-line p)
+$2 = "-rw-r--r-- 1 faoziaziz faoziaziz    180 Feb 25 14:50 #mantap.scm#"
+scheme@(guile-user)> 
+\end{verbatim}
+Membuat modulmu sendiri. Pertama kita bisa membuatnya dalam direktrory module 
+untuk itu kita bisa membuat direktory tersebut dengan perintah
+\begin{verbatim}
+sudo mkdir /usr/local/share/guile/3.0/foo
+\end{verbatim}
+And make text file name bar.scm on this directory, which the content is 
+\begin{verbatim}
+; This code example to create module name bar on foo directory
+; filename : bar.scm
+(define-module (foo bar)
+  #:export (frob))
+(define (frob x)(* 2 x))
+\end{verbatim}
+Kamu bisa membuatnya dengan perintah berikut
+\begin{verbatim}
+C-x C-f 
+/sudo::/usr/local/share/guile/3.0/foo/bar.scm
+\end{verbatim}
+Anda bisa menggunakan perintah di guile seperti berikut
+\begin{verbatim}
+scheme@(guile-user) [1]> (use-modules (foo bar))
+(use-modules (foo bar))
+;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
+;;;       or pass the --no-auto-compile argument to disable.
+;;; compiling /usr/local/share/guile/3.0/foo/bar.scm
+;;; 
+scheme@(guile-user) [1]> (frob 12)
+(frob 12)
+$1 = 24
+scheme@(guile-user) [1]> 
+\end{verbatim}
 \end{document}

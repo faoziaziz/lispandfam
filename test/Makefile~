@@ -1,0 +1,4 @@
+compile:
+	gcc -o simple-guile2 simple-guile.c -I/usr/local/include/guile/3.0 -L/usr/local/lib -lguile-3.0
+run:
+	./simple-guile2

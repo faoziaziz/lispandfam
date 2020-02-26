@@ -1,11 +1,12 @@
 #+TITLE: Scheme untuk Edgy
 #+AUTHOR: Aziz Amerul Faozi
 #+EMAIL: admin@labseni.com
+#+LATEX_HEADER: \usepackage[margin=1.25in]{geometry}
 
 #+STARTUP: overview
 #+STARTUP: content
 #+STARTUP: showall
-#+STARTUP: showeverythin
+#+STARTUP: showeverything
 * Pengantar
 LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
 sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
@@ -19,16 +20,12 @@ Seperi contoh berikut ini :
 #+BEGIN_SRC sh
 scheme
 #+END_SRC
-
 maka akan muncul code seperti berikut
 #+BEGIN_EXAMPLE
 1]=> (+ 1 1)
 #+END_EXAMPLE
-
 code diatas merupakan contoh untuk ekseskusi interpreter dalam mode scheme.
-Hasilnya jelas muncul angka 2.
-
-Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga bisa dibuild dengan menggunakan editor, salah satu editor favorit saya adalah emacs. Tapi kali ini saya tidak akan fokuskan untuk penggunaan emacs, walau nanti dalam buku ini juga mungkin akan ada screenshot dari emacs. Berikut contoh code yang disimpan dalam bentuk file berekstensi scm. 
+Hasilnya jelas muncul angka 2. Sama seperti halnya dengan python dimana selain memiliki interpreter scheme juga bisa dibuild dengan menggunakan editor, salah satu editor favorit saya adalah emacs. Tapi kali ini saya tidak akan fokuskan untuk penggunaan emacs, walau nanti dalam buku ini juga mungkin akan ada screenshot dari emacs. Berikut contoh code yang disimpan dalam bentuk file berekstensi scm. 
 #+BEGIN_SRC scheme
 (+ 1 1)
 #+END_SRC
@@ -40,20 +37,16 @@ Simpan file tersebut dalam file ujischeme.scm
 Pada bagian ini saya mencoba untuk menggunakan buku yang dibuat oleh kurikum MIT untuk memberikan tutorial saja, karena contohnya saya takut akan 
 bisa membuat saya terjerat pasal plagiasi maka yang saya buat akan sedikit berbeda
 dari yang para dosen MIT buat. 
-
 ** Aritmatika Standar
 Pertama kita akan mencoba melakukan penjumlahan, pengurangan, perkalian dengan menggunakan
 scheme.
-
 #+BEGIN_SRC scheme
 (+ 1 1); ini adalah contoh code untuk penjumlahan
 #+END_SRC
-
 bagian setelah tanda semicolon ";" merupakan komentar maka code tersebut hanya
 sebagai dokumentasi dari bahasa pemrograman sajah. Tidak akan dieksekusi oleh 
 komputer. Untuk membuat anda lebih familiar dengan bahasa pemrograman scheme, 
 anda bisa menebak hasil keluaran tersebut dengan menggunakan bahasa scheme
-
 #+BEGIN_SRC scheme
 (/ 6 2) ; contoh dengan pembagian
 (* 3 8); contoh dengan perkalian
@@ -94,7 +87,6 @@ coba kerjakan soal MIT berikut,
 (+ (* 2 4) (- 6 7))
 #+END_SRC
 
-
 ** Constanta
 Lalu bagaimana yah kalau mau assign constanta di scheme, jadi gampang nih gengs,
 semisal kita punya fungsi $E=mc^2$, lalu nilai $m = 2$ nilai $c = 3*10^8$ maka 
@@ -119,7 +111,6 @@ dan eksekusinya tinggal panggil ajah fungsinya sebagai berikut
 #+BEGIN_SRC scheme
 (pangkat2 9) ; pemanggilan fungsi
 #+END_SRC
-
 
 ** Aritmatika Anak Teknik
 
@@ -155,12 +146,293 @@ untuk memanggilnya dalam bentuk variable kamu bisa menggunakan konstanta atau fu
 #+END_SRC
 
 ** Conditional Statement
-
 Jika maka pasti merupakan suatu hal yang wajib untuk para pemrogram (AKA programmer)
 pastinya sih kalau scheme udah support untuk conditional Statement yah, 
 berikut adalah contoh penggunaan conditional statement dengan mengguanakan scheme
 
 #+BEGIN_SRC scheme
 (define x 10)
-()
+(display x)
+#+END_SRC
+* Guile 
+** Pengantar
+** Instalasi
+Oke gengs kali ini gue akan kombinasiin nih antara Scheme dan C. Guile 
+sebuah taktik legendaris untuk menggabungkan Scheme-MIT dan C, biar makin
+edgy.
+
+#+BEGIN_SRC bash
+wget ftp://ftp.gnu.org/gnu/guile/guile-3.0.0.tar.gz
+tar -zxvf guile-3.0.0.tar.gz 
+cd guile-3.0.0
+./configure
+make
+sudo make install
+#+END_SRC
+*** Scheme with Guile
+Menggunakan Guile, untuk menggunakan guile just type command guile after installation succed.
+
+#+BEGIN_SRC bash
+guile 
+scheme@(guile-user)> (+ 1 2 3); just try to execute some command
+$1 = 6
+scheme@(guile-user)>
+
+#+END_SRC
+Sekarang coba untuk melakukan eksekusi fungsi misalnya menggunakna factorial. Berikut untuk kodenya
+dengan 
+
+#+BEGIN_SRC scheme
+(define (factorial n) ; define a function
+(if (zero? n) 1(* n (factorial (- n 1))))
+)
+
+(display (factorial 20))
+#+END_SRC
+simpan file tersebut dengan nama mantap.csh lalu compile dengan kode berikut
+
+#+BEGIN_SRC bash
+guile mantap.sch
+#+END_SRC
+
+Untuk mencoba menambahkan code anda bisa mencobanya dengan code berikut
+
+#+BEGIN_SRC
+(newline)
+(display (getpwnam "root"))
+(newline)
+#+END_SRC
+kemudian file mantap.scm kemudian file tersebut menjadi seperti berikut
+#+BEGIN_SRC
+(newline)
+(define (factorial n) ; define a function
+(if (zero? n) 1(* n (factorial (- n 1))))
+)
+(newline)
+(display (getpwnam "root")) ; untuk menampilkan bash dokumen
+(newline)
+#+END_SRC
+Code diatas adalah code lengkap dari kode untuk menghitung factorial dan
+menampilkan direktrori root. 
+
+*** Menggunakan C untuk Guile
+    SCHEDULED: <2020-02-25 Tue>
+Pertama untuk buat dengan C 
+#+BEGIN_SRC C
+#include<stdlib.h>
+#include<libguile.h>
+
+static SCM my_hostname(void){
+  char *s = getenv("HOSTNAME");
+  if(s==NULL)
+    return SCM_BOOL_F;
+  else
+    return scm_from_local_string(s);
+}
+
+static void inner_main(void *data, int argc, char **argv){
+  scm_c_define_gsubr("my-hostname", 0, 0, 0, my_hostname);
+  scm_shell(argc, argv);
+}
+
+int main(int argc, char **argv){
+  scm_boot_guile(argc, argv, inner_main, 0);
+  return 0; /* never reached */
+}
+#+END_SRC
+set path
+#+BEGIN_SRC bash
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+#+END_SRC
+Kemudian kompile kode berikut dengan methode shared builing. 
+#+BEGIN_SRC bash
+gcc -o simple-guile simple-guile.c\
+ -I/usr/local/include/guile/3.0\
+ -L/usr/local/lib -lguile-3.0
+#+END_SRC
+
+Kemudian set library path anda agar programnya bisa dieksekusi.
+#+BEGIN_SRC
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#+END_SRC
+Jika kamu ingin menjalankan program anda yang telah anda build dengan cara shared build
+anda bisa menggunakan perintah berikut
+
+#+BEGIN_SRC bash
+./simple-guile
+#+END_SRC
+
+Untuk kopmilasi dengan menggunakan pkg-config anda bisa menggunakan perintah ini,
+(ini sudah di test dengan arch linux) 
+#+BEGIN_SRC bash
+gcc -o simple-guile3 simple-guile.c\
+$(pkg-config --cflags --libs guile-3.0)
+#+END_SRC
+*** Build to shared library
+Guile sebenarnya memiliki shared link library. Tapi kali ini gue akan mecoba 
+utnuk membuat ekstensi dengan memnggunakan guile. Sebenarnya itu object library
+biasa. 
+
+#+BEGIN_SRC C
+/*
+  Author : Aziz Faozi
+  Description : this code will create extension in shared library.
+  filename : bessel.c
+*/
+
+#include<math.h>
+#include<libguile.h>
+
+SCM j0_wrapper(SCM x){
+  return scm_from_double(j0 (scm_to_double (x)));
+}
+
+SCM init_bessel(){
+  scm_c_define_gsubr("j0", 1, 0, 0, j0_wrapper);
+}
+
+#+END_SRC
+untuk membuat ekstensi dari kode tersbut kamu bisa menggunakan perintah berikut
+#+BEGIN_SRC tcsh
+gcc $(pkg-config --cflags guile-3.0) -shared -o libguile-bessel.so -fPIC bessel.c
+#+END_SRC 
+untuk mengetes atau melihat dependency nya kamu bisa melihat dengan perintah ldd
+#+BEGIN_SRC sh
+ldd ./libguile-bessel.so 
+#+END_SRC
+Maka akan nampak tampilan seperti berikut
+#+BEGIN_SRC sh
+ldd ./libguile-bessel.so 
+	linux-vdso.so.1 (0x00007fff105d8000)
+	libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007efc9cf3d000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007efc9cd75000)
+	/usr/lib64/ld-linux-x86-64.so.2 (0x00007efc9cf95000) 
+#+END_SRC
+
+
+setelah itu kita coba load extensionnya dengan menggunakan guile 
+#+BEGIN_SRC Scheme
+?????  test git:(master) ????? guile
+guile
+GNU Guile 3.0.0
+Copyright (C) 1995-2020 Free Software Foundation, Inc.
+
+Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+This program is free software, and you are welcome to redistribute it
+under certain conditions; type `,show c' for details.
+
+Enter `,help' for help.
+scheme@(guile-user)> (load-extension "./libguile-bessel" "init_bessel")
+(load-extension "./libguile-bessel" "init_bessel")
+scheme@(guile-user)> (j0 2)
+(j0 2)
+$1 = 0.22389077914123567
+scheme@(guile-user)> 
+#+END_SRC
+
+*** Menggunakan Module
+    SCHEDULED: <2020-02-27 Thu>
+Untuk melihat module di contentn ya kalian bisa melihat direktory di 
+#+BEGIN_SRC bash
+/usr/local/share/guile/3.0
+#+END_SRC
+Disana kita bisa melihat daftar module yang bisa kita pakai dengan guile, 
+seperti contoh ice-9 kalian akan mendapatkannya dalam list daftar berikut.
+
+#+BEGIN_SRC
+~ mantap => ls -la /usr/local/share/guile/3.0
+total 456
+drwxr-xr-x 13 root root   4096 Feb 24 22:43 .
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 ..
+-rw-r--r--  1 root root 307025 Feb 24 22:43 guile-procedures.txt
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 ice-9
+drwxr-xr-x 10 root root   4096 Feb 24 22:43 language
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 oop
+drwxr-xr-x  5 root root   4096 Feb 24 22:43 rnrs
+-rw-r--r--  1 root root  12708 Feb 24 22:43 rnrs.scm
+drwxr-xr-x  2 root root   4096 Feb 24 22:43 scheme
+drwxr-xr-x  2 root root   4096 Feb 24 22:43 scripts
+drwxr-xr-x  7 root root   4096 Feb 24 22:43 srfi
+-rw-r--r--  1 root root  36375 Feb 24 22:43 statprof.scm
+drwxr-xr-x  4 root root   4096 Feb 24 22:43 sxml
+drwxr-xr-x  5 root root   4096 Feb 24 22:43 system
+drwxr-xr-x  2 root root   4096 Feb 24 22:43 texinfo
+-rw-r--r--  1 root root  52321 Feb 24 22:43 texinfo.scm
+drwxr-xr-x  3 root root   4096 Feb 24 22:43 web
+#+END_SRC
+
+Sekarang kita akan mencoba untuk memanggil model ice-9.
+#+BEGIN_SRC bash
+scheme@(guile-user)> (use-modules (ice-9 popen))
+(use-modules (ice-9 popen))
+scheme@(guile-user)> (use-modules (ice-9 rdelim))
+(use-modules (ice-9 rdelim))
+scheme@(guile-user)> (define p (open-input-pipe "ls -l"))
+(define p (open-input-pipe "ls -l"))
+scheme@(guile-user)> (read-line p)
+(read-line p)
+$1 = "total 500"
+scheme@(guile-user)> (read-line p)
+(read-line p)
+$2 = "-rw-r--r-- 1 faoziaziz faoziaziz    180 Feb 25 14:50 #mantap.scm#"
+scheme@(guile-user)> 
+#+END_SRC
+Membuat modulmu sendiri. Pertama kita bisa membuatnya dalam direktrory module 
+untuk itu kita bisa membuat direktory tersebut dengan perintah
+#+BEGIN_SRC bash
+sudo mkdir /usr/local/share/guile/3.0/foo
+#+END_SRC 
+And make text file name bar.scm on this directory, which the content is 
+#+BEGIN_SRC bash
+; This code example to create module name bar on foo directory
+; filename : bar.scm
+(define-module (foo bar)
+  #:export (frob))
+(define (frob x)(* 2 x))
+#+END_SRC
+Kamu bisa membuatnya dengan perintah berikut
+#+BEGIN_SRC bash
+C-x C-f 
+/sudo::/usr/local/share/guile/3.0/foo/bar.scm
+#+END_SRC
+Anda bisa menggunakan perintah di guile seperti berikut
+#+BEGIN_SRC bash
+scheme@(guile-user) [1]> (use-modules (foo bar))
+(use-modules (foo bar))
+;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
+;;;       or pass the --no-auto-compile argument to disable.
+;;; compiling /usr/local/share/guile/3.0/foo/bar.scm
+;;; 
+scheme@(guile-user) [1]> (frob 12)
+(frob 12)
+$1 = 24
+scheme@(guile-user) [1]> 
+#+END_SRC
+
+kita coba masukkan code bessel tadi (yang pernah kita buat kedalam directory modulnya)
+
+#+BEGIN_SRC bash
+sudo mkdir /usr/local/share/guile/3.0/math
+#+END+SRC
+
+Filnya bernama bessel.scm dengan content seperti berikut
+#+BEGIN_SRC Scheme
+(define-module (math bessel)
+#:export (j0))
+
+(load-extension "libguile-bessel" "init_bessel")
+#+END_SRC
+
+kemudian test dengan code berikut
+#+BEGIN_SRC Scheme
+scheme@(guile-user)> (use-modules (math bessel))
+(use-modules (math bessel))
+;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
+;;;       or pass the --no-auto-compile argument to disable.
+;;; compiling /usr/local/share/guile/3.0/math/bessel.scm
+;;; 
+scheme@(guile-user)> (j0 2)
+(j0 2)
+$1 = 0.22389077914123567
+scheme@(guile-user)> 
 #+END_SRC
