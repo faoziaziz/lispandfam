@@ -1,0 +1,11 @@
+# filename configure.ac
+AC_INIT(simple-guile.c)
+
+# find a C compiler
+AC_PROG_CC
+
+#Check for guile
+PKG_CHEK_MODULES([GUILE], [guile-3.0])
+
+# Generate a Makefile, based on the result
+AC_OUTPUT(Makefile)

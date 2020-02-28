@@ -1,4 +1,4 @@
-% Created 2020-02-27 Thu 00:17
+% Created 2020-02-28 Fri 09:50
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,15 +31,15 @@
 \tableofcontents
 
 \section{Pengantar}
-\label{sec:org71ecafe}
+\label{sec:orge07536f}
 LISP adalah bahasa pemrograman yang baik untuk edgy selain secara dialektika ini
 sangat mantap dan susah, karena lebih cenderung mirip sebagai bahasa computer
 daripada sebagai bahasa manusia
 
 \section{Installasi}
-\label{sec:orgd15b7f1}
+\label{sec:org963602d}
 \subsection{Scheme}
-\label{sec:orgfb4f709}
+\label{sec:org380e317}
 Petama kita mencoba untuk menggunakan scheme dalam part 1 kali ini
 untuk memulai scheme kita bisa menggunakan mode interpreter terlebih dahulu.
 Seperi contoh berikut ini :
@@ -59,13 +59,13 @@ Hasilnya jelas muncul angka 2. Sama seperti halnya dengan python dimana selain m
 Simpan file tersebut dalam file ujischeme.scm
 
 \section{Aritmatika}
-\label{sec:orge3db531}
+\label{sec:org070db07}
 
 Pada bagian ini saya mencoba untuk menggunakan buku yang dibuat oleh kurikum MIT untuk memberikan tutorial saja, karena contohnya saya takut akan 
 bisa membuat saya terjerat pasal plagiasi maka yang saya buat akan sedikit berbeda
 dari yang para dosen MIT buat. 
 \subsection{Aritmatika Standar}
-\label{sec:orge4ddb5e}
+\label{sec:org903eb6e}
 Pertama kita akan mencoba melakukan penjumlahan, pengurangan, perkalian dengan menggunakan
 scheme.
 \begin{verbatim}
@@ -105,7 +105,7 @@ perintah aritmatika kedalam dialektika emacs. Oke gengs biar tambah edgy mari ki
 coba kerjakan soal MIT berikut,
 
 \subsubsection{Latihan 1}
-\label{sec:org5850018}
+\label{sec:org0ffd4d2}
 
 \begin{enumerate}
 \item Tentukan dari keluaran code berikut.
@@ -119,7 +119,7 @@ coba kerjakan soal MIT berikut,
 \end{verbatim}
 
 \subsection{Constanta}
-\label{sec:orgc3348a0}
+\label{sec:orgdd25060}
 Lalu bagaimana yah kalau mau assign constanta di scheme, jadi gampang nih gengs,
 semisal kita punya fungsi \(E=mc^2\), lalu nilai \(m = 2\) nilai \(c = 3*10^8\) maka 
 kamu bisa menulis seperti ini gengs.
@@ -131,7 +131,7 @@ kamu bisa menulis seperti ini gengs.
 \end{verbatim}
 
 \subsection{Fungsi}
-\label{sec:org5b2610c}
+\label{sec:orgcd192a8}
 Seperti halnya dengan bahasa pemrograman lain bahasa pemrograman Scheme juga memiliki
 fungsi deklarasinya mirip seperti deklarasi konstanta tapi dia meiliki variable 
 masukkan.
@@ -146,7 +146,7 @@ dan eksekusinya tinggal panggil ajah fungsinya sebagai berikut
 \end{verbatim}
 
 \subsection{Aritmatika Anak Teknik}
-\label{sec:org5457b4a}
+\label{sec:org59c1ec3}
 
 Oke gengs ternyata Scheme bisa support dengan komputasi anak teknik, dia ternyata
 mampu untuk memanipulasi varible complex. Berikut contohnya
@@ -159,7 +159,7 @@ ini berarti memang schemers bisa terbantu sekali dengan menggunakan bahasa ini,
 apalagi jika schemers adalah seorang anak teknik. 
 
 \subsection{String}
-\label{sec:org3958207}
+\label{sec:orgd2c8c5a}
 Untuk bisa lucu-lucuan harus ada string di bahasa pemrograman gengs, memang sih
 schemers akan cukup ribet untuk memanipulasi ini di scheme. Karena memang ini
 dibuat anak teknik untuk ngitung yang aneh-aneh ketimbang buat curhat makanya 
@@ -181,7 +181,7 @@ untuk memanggilnya dalam bentuk variable kamu bisa menggunakan konstanta atau fu
 \end{verbatim}
 
 \subsection{Conditional Statement}
-\label{sec:orged23842}
+\label{sec:org525c929}
 Jika maka pasti merupakan suatu hal yang wajib untuk para pemrogram (AKA programmer)
 pastinya sih kalau scheme udah support untuk conditional Statement yah, 
 berikut adalah contoh penggunaan conditional statement dengan mengguanakan scheme
@@ -191,11 +191,11 @@ berikut adalah contoh penggunaan conditional statement dengan mengguanakan schem
 (display x)
 \end{verbatim}
 \section{Guile}
-\label{sec:orgc0be6a5}
+\label{sec:org7603c91}
 \subsection{Pengantar}
-\label{sec:org665adf3}
+\label{sec:org9cc3174}
 \subsection{Instalasi}
-\label{sec:org93108ef}
+\label{sec:org321ce5b}
 Oke gengs kali ini gue akan kombinasiin nih antara Scheme dan C. Guile 
 sebuah taktik legendaris untuk menggabungkan Scheme-MIT dan C, biar makin
 edgy.
@@ -209,7 +209,7 @@ make
 sudo make install
 \end{verbatim}
 \subsubsection{Scheme with Guile}
-\label{sec:org18bdf0d}
+\label{sec:org4cfe653}
 Menggunakan Guile, untuk menggunakan guile just type command guile after installation succed.
 
 \begin{verbatim}
@@ -256,9 +256,12 @@ Code diatas adalah code lengkap dari kode untuk menghitung factorial dan
 menampilkan direktrori root. 
 
 \subsubsection{Menggunakan C untuk Guile}
-\label{sec:orgd8a322a}
+\label{sec:orge81c3ae}
 Pertama untuk buat dengan C 
 \begin{verbatim}
+/* 
+filename : simple_guile.c 
+*/
 #include<stdlib.h>
 #include<libguile.h>
 
@@ -309,7 +312,7 @@ gcc -o simple-guile3 simple-guile.c\
 $(pkg-config --cflags --libs guile-3.0)
 \end{verbatim}
 \subsubsection{Build to shared library}
-\label{sec:org25abbfa}
+\label{sec:orgdbd3c63}
 Guile sebenarnya memiliki shared link library. Tapi kali ini gue akan mecoba 
 utnuk membuat ekstensi dengan memnggunakan guile. Sebenarnya itu object library
 biasa. 
@@ -372,7 +375,7 @@ scheme@(guile-user)>
 \end{verbatim}
 
 \subsubsection{Menggunakan Module}
-\label{sec:orga7506be}
+\label{sec:orgaee9b76}
 Untuk melihat module di contentn ya kalian bisa melihat direktory di 
 \begin{verbatim}
 /usr/local/share/guile/3.0
@@ -449,4 +452,108 @@ scheme@(guile-user) [1]> (frob 12)
 $1 = 24
 scheme@(guile-user) [1]> 
 \end{verbatim}
+
+kita coba masukkan code bessel tadi (yang pernah kita buat kedalam directory modulnya)
+
+\begin{verbatim}
+sudo mkdir /usr/local/share/guile/3.0/math
+#+END+SRC
+
+Filnya bernama bessel.scm dengan content seperti berikut
+#+BEGIN_SRC Scheme
+(define-module (math bessel)
+#:export (j0))
+
+(load-extension "libguile-bessel" "init_bessel")
+\end{verbatim}
+
+kemudian test dengan code berikut
+\begin{verbatim}
+scheme@(guile-user)> (use-modules (math bessel))
+(use-modules (math bessel))
+;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
+;;;       or pass the --no-auto-compile argument to disable.
+;;; compiling /usr/local/share/guile/3.0/math/bessel.scm
+;;; 
+scheme@(guile-user)> (j0 2)
+(j0 2)
+$1 = 0.22389077914123567
+scheme@(guile-user)> 
+\end{verbatim}
+\subsubsection{Menggunakan Makefile}
+\label{sec:orgf81985e}
+Dengan mengunakan simple-guile.c kita bisa menggunakan Makefile untuk membuild 
+programnya berikut makefile untuk mmebuat progammnya.
+\begin{verbatim}
+# Menggunakan GCC, jika kamu sudah menginstallnya
+CC=gcc
+# Memberi tahu c compiler untuk mencari <libguile.h>
+CFLAGS=`pkg-config --cflags guile-3.0`
+
+# Memberitahu kepada linker library apa yang harus dicari
+LIBS=`pkg-config --libs guile-3.0`
+
+simple-guile: simple-guile.o
+	${CC} simple-guile.o ${LIBS} -o simple-guile4
+simple-guile.o: simple-guile.c
+	${CC} -c ${CFLAGS}  simple-guile.c 
+
+\end{verbatim}
+
+sayangnya harus setting linker path dulu lagi untuk bisa menjalankan programmnya.
+\begin{verbatim}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+\end{verbatim}
+
+lalu jalankan programnya
+\begin{verbatim}
+./simple-guile4 
+\end{verbatim}
+
+Jika elu pengin menggunakan Autoconf untuk membangun aplikasi dengan menggunakan 
+C/Guile anda bisa menggunakan code berikut.
+
+\begin{verbatim}
+# filename configure.ac
+AC_INIT(simple-guile.c)
+
+# find a C compiler
+AC_PROG_CC
+
+#Check for guile
+PKG_CHECK_MODULES([GUILE], [guile-3.0])
+
+# Generate a Makefile, based on the result
+AC_OUTPUT(Makefile)
+
+\end{verbatim}
+
+lalu buat file dengan nama Makefile.in
+\begin{verbatim}
+# The configure script fills in these values.
+CC=@CC@
+CFLAGS=@GUILE_CFLAGS@
+LIBS=@GUILE_LIBS@
+simple-guile: simple-guile.o
+	${CC} simple-guile.o ${LIBS} -o simple-guile
+simple-guile.o: simple-guile.c
+	${CC} -c ${CFLAGS} simple-guile.c
+\end{verbatim}
+
+kemudian jalankan
+\begin{verbatim}
+autoreconf -vif
+\end{verbatim}
+untuk membuat file configure, lalu jalankan file configurenya dengan perintah 
+berikut
+
+\begin{verbatim}
+./confugure
+\end{verbatim}
+eksekusi tersebut akan menghasilkan file make. lalu gunakan perintah make untuk
+mengeksekusi perintah tersebut. Dan jalankan program.
+\#+BEIGIN\(_{\text{SRC}}\) bash
+make 
+./simple-guile
+\#+END\(_{\text{SRC}}\)
 \end{document}

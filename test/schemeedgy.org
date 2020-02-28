@@ -219,6 +219,9 @@ menampilkan direktrori root.
     SCHEDULED: <2020-02-25 Tue>
 Pertama untuk buat dengan C 
 #+BEGIN_SRC C
+/* 
+filename : simple_guile.c 
+*/
 #include<stdlib.h>
 #include<libguile.h>
 
@@ -435,4 +438,79 @@ scheme@(guile-user)> (j0 2)
 (j0 2)
 $1 = 0.22389077914123567
 scheme@(guile-user)> 
+#+END_SRC
+*** Menggunakan Makefile 
+Dengan mengunakan simple-guile.c kita bisa menggunakan Makefile untuk membuild 
+programnya berikut makefile untuk mmebuat progammnya.
+#+BEGIN_SRC Makefile
+# Menggunakan GCC, jika kamu sudah menginstallnya
+CC=gcc
+# Memberi tahu c compiler untuk mencari <libguile.h>
+CFLAGS=`pkg-config --cflags guile-3.0`
+
+# Memberitahu kepada linker library apa yang harus dicari
+LIBS=`pkg-config --libs guile-3.0`
+
+simple-guile: simple-guile.o
+	${CC} simple-guile.o ${LIBS} -o simple-guile4
+simple-guile.o: simple-guile.c
+	${CC} -c ${CFLAGS}  simple-guile.c 
+
+#+END_SRC 
+
+sayangnya harus setting linker path dulu lagi untuk bisa menjalankan programmnya.
+#+BEGIN_SRC bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#+END_SRC
+
+lalu jalankan programnya
+#+BEGIN_SRC bash
+./simple-guile4 
+#+END_SRC
+
+Jika elu pengin menggunakan Autoconf untuk membangun aplikasi dengan menggunakan 
+C/Guile anda bisa menggunakan code berikut.
+
+#+BEGIN_SRC Autoconf
+# filename configure.ac
+AC_INIT(simple-guile.c)
+
+# find a C compiler
+AC_PROG_CC
+
+#Check for guile
+PKG_CHECK_MODULES([GUILE], [guile-3.0])
+
+# Generate a Makefile, based on the result
+AC_OUTPUT(Makefile)
+
+#+END_SRC
+
+lalu buat file dengan nama Makefile.in
+#+BEGIN_SRC makefile 
+# The configure script fills in these values.
+CC=@CC@
+CFLAGS=@GUILE_CFLAGS@
+LIBS=@GUILE_LIBS@
+simple-guile: simple-guile.o
+	${CC} simple-guile.o ${LIBS} -o simple-guile
+simple-guile.o: simple-guile.c
+	${CC} -c ${CFLAGS} simple-guile.c
+#+END_SRC
+
+kemudian jalankan
+#+BEGIN_SRC
+autoreconf -vif
+#+END_SRC
+untuk membuat file configure, lalu jalankan file configurenya dengan perintah 
+berikut
+
+#+BEGIN_SRC bash
+./confugure
+#+END_SRC
+eksekusi tersebut akan menghasilkan file make. lalu gunakan perintah make untuk
+mengeksekusi perintah tersebut. Dan jalankan program.
+#+BEGIN_SRC bash
+make 
+./simple-guile
 #+END_SRC

@@ -1,7 +1,7 @@
 # The configure script fills in these values.
-CC=gcc
-CFLAGS=-I/usr/local/include/guile/3.0 -pthread 
-LIBS=-L/usr/local/lib -lguile-3.0 -lgc 
+CC=@CC@
+CFLAGS=@GUILE_CFLAGS@
+LIBS=@GUILE_LIBS@
 simple-guile: simple-guile.o
 	${CC} simple-guile.o ${LIBS} -o simple-guile
 simple-guile.o: simple-guile.c
